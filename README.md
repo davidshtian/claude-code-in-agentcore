@@ -2,6 +2,9 @@
 
 Inspired by [xiehust/agentcore_demo](https://github.com/xiehust/agentcore_demo). This learning project contains scripts and tools to build, deploy, and invoke Claude Code using Amazon Bedrock AgentCore.
 
+<img width="905" height="438" alt="image" src="https://github.com/user-attachments/assets/e26bd7f7-addb-41e2-b9ef-9f669a3ca0a2" />
+
+
 ## 🚀 Quick Start
 
 ### Prerequisites
