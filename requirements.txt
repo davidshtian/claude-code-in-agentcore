@@ -1,0 +1,22 @@
+# Claude Code Agent Server Dependencies
+# Based on current environment versions
+
+# Core FastAPI framework
+fastapi==0.115.14
+
+# ASGI server for production
+uvicorn==0.29.0
+
+# Data validation and serialization
+pydantic==2.11.7
+
+# HTTP client for testing/client scripts
+requests==2.32.4
+
+# Claude Code SDK (main dependency)
+claude-code-sdk==0.0.20
+
+# Optional development dependencies (uncomment if needed)
+# pytest
+# pytest-asyncio
+# httpx
