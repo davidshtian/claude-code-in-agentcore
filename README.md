@@ -25,11 +25,14 @@ Your AWS credentials need permissions for:
 
 ```
 claude-code-agentcore/
-├── build_push.sh          # Build and push Docker image to ECR
-├── deploy_agent.py        # Deploy agent runtime to Bedrock AgentCore
-├── invoke_agent.py        # Invoke the deployed agent
-├── Dockerfile             # Container configuration
 ├── agent.py              # FastAPI agent implementation
+├── scripts/              # Deployment and management scripts
+│   ├── build_push.sh     # Build and push Docker image to ECR
+│   ├── deploy_agent.py   # Deploy agent runtime to Bedrock AgentCore
+│   └── invoke_agent.py   # Invoke the deployed agent
+├── docker/               # Container configuration
+│   ├── Dockerfile        # Container setup
+│   └── requirements.txt  # Python dependencies
 └── README.md             # This guide
 ```
 
@@ -41,10 +44,10 @@ Use the `build_push.sh` script to build your Docker image and push it to Amazon 
 
 ```bash
 # Basic usage (uses default region us-east-1)
-./build_push.sh --account-id YOUR_ACCOUNT_ID
+./scripts/build_push.sh --account-id YOUR_ACCOUNT_ID
 
 # With custom parameters
-./build_push.sh \
+./scripts/build_push.sh \
   --account-id YOUR_ACCOUNT_ID \
   --region us-west-2 \
   --repository-name my-claude-agent \
@@ -70,10 +73,10 @@ Use the `deploy_agent.py` script to create an agent runtime in Bedrock AgentCore
 
 ```bash
 # Basic usage
-python deploy_agent.py --account-id YOUR_ACCOUNT_ID
+python scripts/deploy_agent.py --account-id YOUR_ACCOUNT_ID
 
 # With custom parameters
-python deploy_agent.py \
+python scripts/deploy_agent.py \
   --account-id YOUR_ACCOUNT_ID \
   --region us-west-2 \
   --repository-name my-claude-agent \
@@ -97,15 +100,15 @@ Use the `invoke_agent.py` script to interact with your deployed agent:
 
 ```bash
 # Basic usage with default prompt
-python invoke_agent.py --agent-runtime-arn "YOUR_AGENT_RUNTIME_ARN"
+python scripts/invoke_agent.py --agent-runtime-arn "YOUR_AGENT_RUNTIME_ARN"
 
 # With custom prompt
-python invoke_agent.py \
+python scripts/invoke_agent.py \
   --agent-runtime-arn "YOUR_AGENT_RUNTIME_ARN" \
   --prompt "What tools do you have available?"
 
 # With all parameters
-python invoke_agent.py \
+python scripts/invoke_agent.py \
   --agent-runtime-arn "YOUR_AGENT_RUNTIME_ARN" \
   --prompt "Help me analyze this data" \
   --region us-west-2 \
