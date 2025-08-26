@@ -84,6 +84,18 @@ echo "Full Image URI:   $FULL_IMAGE_URI"
 echo "========================================="
 echo ""
 
+# Check if we're in the correct directory (project root)
+if [[ ! -f "agent.py" ]] || [[ ! -f "docker/Dockerfile" ]]; then
+    echo "Error: This script must be run from the project root directory"
+    echo "Expected files: agent.py, docker/Dockerfile"
+    echo "Current directory: $(pwd)"
+    echo ""
+    echo "Please run from project root:"
+    echo "  cd /path/to/claude-code-agentcore"
+    echo "  ./scripts/build_push.sh --account-id YOUR_ACCOUNT_ID"
+    exit 1
+fi
+
 # Function to check if command succeeded
 check_command() {
     if [[ $? -ne 0 ]]; then
@@ -112,7 +124,7 @@ echo ""
 # Step 3: Build and push Docker image
 echo "Step 3: Building and pushing Docker image..."
 echo "Building for linux/arm64 platform..."
-docker buildx build --platform linux/arm64 -t "$FULL_IMAGE_URI" --push .
+docker buildx build --platform linux/arm64 -f docker/Dockerfile -t "$FULL_IMAGE_URI" --push .
 check_command "Docker build and push"
 echo "✓ Successfully built and pushed image"
 echo ""
