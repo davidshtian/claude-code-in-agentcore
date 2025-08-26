@@ -1,6 +1,6 @@
 # Claude Code in AgentCore
 
-This repository contains scripts and tools to build, deploy, and invoke Claude Code using Amazon Bedrock AgentCore.
+Inspired by [xiehust/agentcore_demo](https://github.com/xiehust/agentcore_demo). This learning project contains scripts and tools to build, deploy, and invoke Claude Code using Amazon Bedrock AgentCore.
 
 ## 🚀 Quick Start
 
