@@ -15,8 +15,8 @@ def main():
     )
     parser.add_argument(
         "--repository-name", 
-        default="claude-code-agentcore", 
-        help="ECR Repository name (default: claude-code-agentcore)"
+        default="claude-agent-agentcore", 
+        help="ECR Repository name (default: claude-agent-agentcore)"
     )
     parser.add_argument(
         "--version", 
@@ -43,7 +43,7 @@ def main():
     
     try:
         response = client.create_agent_runtime(
-            agentRuntimeName="claude_code_agentcore",
+            agentRuntimeName="claude_agent_agentcore",
             agentRuntimeArtifact={
                 "containerConfiguration": {
                     "containerUri": container_uri

@@ -1,6 +1,6 @@
-# Claude Code in AgentCore
+# Claude Agent in AgentCore
 
-Inspired by [xiehust/agentcore_demo](https://github.com/xiehust/agentcore_demo). This learning project contains scripts and tools to build, deploy, and invoke Claude Code using Amazon Bedrock AgentCore.
+Inspired by [xiehust/agentcore_demo](https://github.com/xiehust/agentcore_demo). This learning project contains scripts and tools to build, deploy, and invoke Claude Agent using Amazon Bedrock AgentCore.
 
 <img width="905" height="438" alt="image" src="https://github.com/user-attachments/assets/e26bd7f7-addb-41e2-b9ef-9f669a3ca0a2" />
 
@@ -27,7 +27,7 @@ Your AWS credentials need permissions for:
 ## 📁 Project Structure
 
 ```
-claude-code-agentcore/
+claude-agent-agentcore/
 ├── agent.py              # FastAPI agent implementation
 ├── scripts/              # Deployment and management scripts
 │   ├── build_push.sh     # Build and push Docker image to ECR
@@ -60,7 +60,7 @@ Use the `build_push.sh` script to build your Docker image and push it to Amazon 
 **Script Parameters:**
 - `--account-id` (required): Your AWS Account ID
 - `--region` (optional): AWS Region (default: us-east-1)
-- `--repository-name` (optional): ECR repository name (default: claude-code-agentcore)
+- `--repository-name` (optional): ECR repository name (default: claude-agent-agentcore)
 - `--version` (optional): Docker image tag (default: latest)
 
 **What this script does:**
@@ -89,12 +89,12 @@ python scripts/deploy_agent.py \
 **Script Parameters:**
 - `--account-id` (required): Your AWS Account ID
 - `--region` (optional): AWS Region (default: us-east-1)
-- `--repository-name` (optional): ECR repository name (default: claude-code-agentcore)
+- `--repository-name` (optional): ECR repository name (default: claude-agent-agentcore)
 - `--version` (optional): Docker image tag (default: latest)
 
 **Important Notes:**
 - The script assumes an IAM role named `AgentRuntimeRole` exists in your account
-- The agent runtime name will be `claude_code_agentcore`
+- The agent runtime name will be `claude_agent_agentcore`
 - Save the returned Agent Runtime ARN for the next step
 
 ### Step 3: Invoke Your Agent

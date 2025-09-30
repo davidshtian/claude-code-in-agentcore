@@ -13,8 +13,8 @@ pydantic==2.11.7
 # HTTP client for testing/client scripts
 requests==2.32.4
 
-# Claude Code SDK (main dependency)
-claude-code-sdk==0.0.20
+# Claude Agent SDK (main dependency)
+claude-agent-sdk==0.1.0
 
 # Optional development dependencies (uncomment if needed)
 # pytest

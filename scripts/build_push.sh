@@ -2,7 +2,7 @@
 
 # Default values
 DEFAULT_REGION="us-east-1"
-DEFAULT_REPOSITORY_NAME="claude-code-agentcore"
+DEFAULT_REPOSITORY_NAME="claude-agent-agentcore"
 DEFAULT_VERSION="latest"
 
 # Function to display usage

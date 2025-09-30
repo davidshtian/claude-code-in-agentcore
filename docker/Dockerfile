@@ -11,7 +11,7 @@ RUN apt-get update && apt-get install -y \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
-# Install Claude Code globally via npm
+# Install Claude Agent globally via npm
 RUN npm install -g @anthropic-ai/claude-code
 
 # Copy requirements file
@@ -23,7 +23,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Copy application files
 COPY agent.py ./
 
-# Set environment variables for Claude Code SDK
+# Set environment variables for Claude Agent SDK
 ENV CLAUDE_CODE_USE_BEDROCK=1
 ENV ANTHROPIC_MODEL=us.anthropic.claude-3-7-sonnet-20250219-v1:0
 

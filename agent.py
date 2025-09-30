@@ -3,11 +3,11 @@ from fastapi.responses import StreamingResponse
 from pydantic import BaseModel
 from typing import Dict, Any, AsyncGenerator
 from datetime import datetime
-from claude_code_sdk import ClaudeSDKClient, ClaudeCodeOptions
+from claude_agent_sdk import ClaudeSDKClient, ClaudeAgentOptions
 import json
 import asyncio
 
-app = FastAPI(title="Claude Code on AgentCore", version="1.0.0")
+app = FastAPI(title="Claude Agent on AgentCore", version="1.0.0")
 
 
 class RequestModel(BaseModel):
@@ -17,12 +17,12 @@ class RequestModel(BaseModel):
 async def stream_agent_response(
     prompt: str, system_prompt: str = None, max_turns: int = 10
 ) -> AsyncGenerator[str, None]:
-    """Stream agent responses using ClaudeSDKClient"""
+    """Stream agent responses using Claude Agent SDK"""
     try:
         mcp_servers = {
             "playwright": {"command": "npx", "args": ["@playwright/mcp@latest"]}
         }
-        options = ClaudeCodeOptions(
+        options = ClaudeAgentOptions(
             mcp_servers=mcp_servers,
             system_prompt=system_prompt or "You are a helpful AI assistant",
             allowed_tools=[
@@ -96,7 +96,7 @@ async def stream_agent_response(
 
 @app.post("/invocations")
 async def invoke_agent(request: RequestModel):
-    """Main agent endpoint with ClaudeSDKClient"""
+    """Main agent endpoint with Claude Agent SDK"""
     prompt = request.input.get("prompt", "")
     system_prompt = request.input.get("system_prompt")
     max_turns = request.input.get("max_turns", 10)
